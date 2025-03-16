@@ -4,6 +4,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    color-scheme: light only;
 }
 
 :root {
@@ -11,17 +12,127 @@
     --dark-red: #800000;
     --light-red: #ff3333;
     --accent-gold: #d4af37;
-    --dark-gray: #333;
-    --light-gray: #f8f8f8;
+    --dark-gray: #222;
+    --medium-gray: #333;
+    --light-gray: #444;
+    --text-color: #e0e0e0;
     --nazi-yellow: #ffcc00;
+    --background-gray: #1a1a1a;
+    --card-bg: #2a2a2a;
+    --border-color: #444;
+    --header-bg: #f8f8f8;
 }
 
 body {
-    font-family: Arial, sans-serif;
+    font-family: 'Roboto', Arial, sans-serif;
     line-height: 1.6;
+    color: var(--text-color);
+    background-color: var(--background-gray);
+    background-image: repeating-linear-gradient( 45deg, transparent, transparent 10px, rgba(255, 204, 0, 0.03) 10px, rgba(255, 204, 0, 0.03) 20px);
+    forced-color-adjust: none;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+nav a {
+    font-family: 'Cinzel', 'Times New Roman', serif;
+    font-weight: 700;
+}
+
+@media (prefers-color-scheme: dark) {
+    body {
+        background-color: var(--background-gray);
+        color: var(--text-color);
+    }
+}
+
+
+/* Language switcher */
+
+.language-switcher {
+    position: absolute;
+    top: 10px;
+    right: 20px;
+    display: flex;
+    align-items: center;
+    z-index: 101;
+}
+
+.language-switcher label {
+    margin-right: 10px;
     color: var(--dark-gray);
-    background-color: #f5f5f5;
-    background-image: repeating-linear-gradient( 45deg, transparent, transparent 10px, rgba(255, 204, 0, 0.05) 10px, rgba(255, 204, 0, 0.05) 20px);
+    font-weight: bold;
+    font-size: 0.9em;
+}
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 26px;
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: var(--medium-gray);
+    transition: .4s;
+    border-radius: 34px;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 18px;
+    width: 18px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    transition: .4s;
+    border-radius: 50%;
+}
+
+input:checked+.slider {
+    background-color: var(--primary-red);
+}
+
+input:focus+.slider {
+    box-shadow: 0 0 1px var(--primary-red);
+}
+
+input:checked+.slider:before {
+    transform: translateX(34px);
+}
+
+.language-label {
+    display: flex;
+    justify-content: space-between;
+    padding: 0 5px;
+    font-size: 0.8em;
+    font-weight: bold;
+    color: white;
+    position: absolute;
+    top: 5px;
+    left: 8px;
+    right: 8px;
+}
+
+.language-label span:last-child {
+    margin-right: 3px;
 }
 
 
@@ -30,7 +141,7 @@ body {
 header {
     text-align: center;
     padding: 10px 0;
-    background-color: var(--light-gray);
+    background-color: var(--header-bg);
     border-bottom: 5px solid var(--primary-red);
     position: relative;
 }
@@ -49,6 +160,7 @@ header::after {
     max-width: 550px;
     margin: 0 auto;
     display: block;
+    filter: drop-shadow(0 0 5px rgba(255, 0, 0, 0.3));
 }
 
 .banner {
@@ -56,6 +168,7 @@ header::after {
     max-height: 60px;
     object-fit: contain;
     margin-bottom: 5px;
+    filter: drop-shadow(0 0 3px rgba(255, 204, 0, 0.5));
 }
 
 
@@ -66,7 +179,7 @@ nav {
     padding: 15px 0;
     text-align: center;
     z-index: 100;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
     border-bottom: 3px solid var(--nazi-yellow);
 }
 
@@ -79,6 +192,7 @@ nav a {
     display: inline-block;
     text-transform: uppercase;
     letter-spacing: 1px;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
 }
 
 nav a:hover {
@@ -117,9 +231,9 @@ main {
     margin-bottom: 50px;
     padding: 20px;
     border-bottom: 3px solid var(--primary-red);
-    background-color: white;
+    background-color: var(--card-bg);
     border-radius: 5px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.2);
 }
 
 .mission-section h2 {
@@ -131,6 +245,7 @@ main {
     letter-spacing: 2px;
     position: relative;
     padding-bottom: 15px;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
 }
 
 .mission-section h2::after {
@@ -160,6 +275,7 @@ main {
     margin-bottom: 30px;
     font-size: 1.1em;
     line-height: 1.8;
+    color: var(--text-color);
 }
 
 .mission-pillars {
@@ -174,9 +290,9 @@ main {
     min-width: 250px;
     margin: 15px;
     padding: 20px;
-    background-color: var(--light-gray);
+    background-color: var(--medium-gray);
     border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
     border-left: 4px solid var(--primary-red);
     position: relative;
 }
@@ -195,6 +311,11 @@ main {
     margin-bottom: 15px;
     color: var(--primary-red);
     font-size: 1.4em;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+
+.pillar p {
+    color: var(--text-color);
 }
 
 
@@ -213,6 +334,7 @@ main {
     letter-spacing: 2px;
     position: relative;
     padding-bottom: 15px;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
 }
 
 .films-section h2::after {
@@ -243,18 +365,19 @@ main {
     font-size: 1.1em;
     line-height: 1.8;
     padding: 20px;
-    background-color: var(--light-gray);
+    background-color: var(--medium-gray);
     border-radius: 5px;
     border-left: 4px solid var(--primary-red);
+    color: var(--text-color);
 }
 
 .movie-section {
     margin-bottom: 40px;
     padding: 20px;
-    border-bottom: 1px solid #eee;
-    background-color: white;
+    border-bottom: 1px solid var(--border-color);
+    background-color: var(--card-bg);
     border-radius: 5px;
-    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+    box-shadow: 0 3px 15px rgba(0, 0, 0, 0.15);
     transition: transform 0.3s ease;
     position: relative;
     overflow: hidden;
@@ -286,6 +409,7 @@ main {
 
 .movie-section:hover {
     transform: translateY(-5px);
+    box-shadow: 0 5px 20px rgba(179, 0, 0, 0.2);
 }
 
 .movie-section h3 {
@@ -298,6 +422,7 @@ main {
     padding-bottom: 10px;
     display: inline-block;
     position: relative;
+    text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
 }
 
 .movie-section h3::after {
@@ -315,8 +440,8 @@ main {
     height: auto;
     margin-bottom: 15px;
     border-radius: 5px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
-    border: 1px solid #ddd;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.4);
+    border: 1px solid var(--border-color);
     max-height: 350px;
     object-fit: contain;
 }
@@ -325,16 +450,16 @@ main {
     margin-bottom: 15px;
     line-height: 1.8;
     font-size: 1.05em;
-    color: #444;
+    color: var(--text-color);
 }
 
 .contact-section {
     margin-bottom: 50px;
     padding: 30px;
     text-align: center;
-    background-color: white;
+    background-color: var(--card-bg);
     border-radius: 5px;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    box-shadow: 0 2px 15px rgba(0, 0, 0, 0.2);
     border-top: 4px solid var(--primary-red);
     position: relative;
 }
@@ -355,6 +480,7 @@ main {
     font-size: 2em;
     text-transform: uppercase;
     letter-spacing: 2px;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
 }
 
 .contact-section h2::before {
@@ -370,14 +496,18 @@ main {
 }
 
 .contact-section a {
-    color: var(--primary-red);
+    color: var(--light-red);
     font-weight: bold;
     transition: color 0.3s;
 }
 
 .contact-section a:hover {
-    color: var(--dark-red);
+    color: var(--nazi-yellow);
     text-decoration: underline;
+}
+
+.contact-section p {
+    color: var(--text-color);
 }
 
 
@@ -385,12 +515,13 @@ main {
 
 footer {
     background-color: var(--dark-gray);
-    color: white;
+    color: var(--text-color);
     text-align: center;
     padding: 20px 0;
     margin-top: 20px;
     border-top: 5px solid var(--primary-red);
     position: relative;
+    box-shadow: 0 -5px 15px rgba(0, 0, 0, 0.2);
 }
 
 footer::before {
@@ -404,7 +535,7 @@ footer::before {
 }
 
 footer a {
-    color: white;
+    color: var(--text-color);
     text-decoration: none;
     margin: 0 10px;
     transition: color 0.3s;
@@ -431,7 +562,7 @@ footer a:hover {
         display: block;
         padding: 15px;
         margin: 0;
-        border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     }
     nav a:last-child {
         border-bottom: none;
