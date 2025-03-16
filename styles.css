@@ -6,10 +6,22 @@
     box-sizing: border-box;
 }
 
+:root {
+    --primary-red: #b30000;
+    --dark-red: #800000;
+    --light-red: #ff3333;
+    --accent-gold: #d4af37;
+    --dark-gray: #333;
+    --light-gray: #f8f8f8;
+    --nazi-yellow: #ffcc00;
+}
+
 body {
     font-family: Arial, sans-serif;
     line-height: 1.6;
-    color: #333;
+    color: var(--dark-gray);
+    background-color: #f5f5f5;
+    background-image: repeating-linear-gradient( 45deg, transparent, transparent 10px, rgba(255, 204, 0, 0.05) 10px, rgba(255, 204, 0, 0.05) 20px);
 }
 
 
@@ -18,17 +30,29 @@ body {
 header {
     text-align: center;
     padding: 20px 0;
-    background-color: #f8f8f8;
+    background-color: var(--light-gray);
+    border-bottom: 5px solid var(--primary-red);
+    position: relative;
+}
+
+header::after {
+    content: '';
+    position: absolute;
+    bottom: -15px;
+    left: 0;
+    width: 100%;
+    height: 10px;
+    background-image: repeating-linear-gradient( 90deg, var(--primary-red), var(--primary-red) 20px, var(--nazi-yellow) 20px, var(--nazi-yellow) 40px);
 }
 
 .logo {
-    max-width: 200px;
-    margin-bottom: 15px;
+    max-width: 500px;
+    margin-top: 15px;
 }
 
 .banner {
     width: 100%;
-    max-height: 300px;
+    max-height: 60px;
     object-fit: contain;
 }
 
@@ -36,10 +60,12 @@ header {
 /* Navigation styles */
 
 nav {
-    background-color: #333;
+    background-color: var(--primary-red);
     padding: 15px 0;
     text-align: center;
     z-index: 100;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-bottom: 3px solid var(--nazi-yellow);
 }
 
 nav a {
@@ -49,10 +75,12 @@ nav a {
     font-weight: bold;
     transition: color 0.3s;
     display: inline-block;
+    text-transform: uppercase;
+    letter-spacing: 1px;
 }
 
 nav a:hover {
-    color: #f8c630;
+    color: var(--nazi-yellow);
 }
 
 
@@ -75,7 +103,7 @@ nav a:hover {
 /* Main content styles */
 
 main {
-    max-width: 1200px;
+    max-width: 1000px;
     margin: 0 auto;
     padding: 20px;
 }
@@ -86,13 +114,44 @@ main {
 .mission-section {
     margin-bottom: 50px;
     padding: 20px;
-    border-bottom: 1px solid #eee;
+    border-bottom: 3px solid var(--primary-red);
+    background-color: white;
+    border-radius: 5px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
 }
 
 .mission-section h2 {
     margin-bottom: 20px;
-    color: #222;
+    color: var(--primary-red);
     text-align: center;
+    font-size: 2.2em;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    position: relative;
+    padding-bottom: 15px;
+}
+
+.mission-section h2::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 3px;
+    background-color: var(--primary-red);
+}
+
+.mission-section h2::before {
+    content: '';
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    background-image: url('images/swastica.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    margin-right: 10px;
+    vertical-align: middle;
 }
 
 .mission-section>p {
@@ -113,14 +172,27 @@ main {
     min-width: 250px;
     margin: 15px;
     padding: 20px;
-    background-color: #f8f8f8;
+    background-color: var(--light-gray);
     border-radius: 5px;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    border-left: 4px solid var(--primary-red);
+    position: relative;
+}
+
+.pillar::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background-image: linear-gradient(to right, var(--primary-red), var(--nazi-yellow));
 }
 
 .pillar h3 {
     margin-bottom: 15px;
-    color: #222;
+    color: var(--primary-red);
+    font-size: 1.4em;
 }
 
 
@@ -132,8 +204,36 @@ main {
 
 .films-section h2 {
     margin-bottom: 20px;
-    color: #222;
+    color: var(--primary-red);
     text-align: center;
+    font-size: 2.2em;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    position: relative;
+    padding-bottom: 15px;
+}
+
+.films-section h2::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 100px;
+    height: 3px;
+    background-color: var(--primary-red);
+}
+
+.films-section h2::before {
+    content: '';
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    background-image: url('images/swastica.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    margin-right: 10px;
+    vertical-align: middle;
 }
 
 .films-intro {
@@ -141,19 +241,71 @@ main {
     font-size: 1.1em;
     line-height: 1.8;
     padding: 20px;
-    background-color: #f8f8f8;
+    background-color: var(--light-gray);
     border-radius: 5px;
+    border-left: 4px solid var(--primary-red);
 }
 
 .movie-section {
-    margin-bottom: 50px;
+    margin-bottom: 40px;
     padding: 20px;
     border-bottom: 1px solid #eee;
+    background-color: white;
+    border-radius: 5px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.08);
+    transition: transform 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.movie-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 5px;
+    height: 100%;
+    background-color: var(--primary-red);
+}
+
+.movie-section::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 5px;
+    height: 100%;
+    background-color: var(--nazi-yellow);
+    opacity: 0.7;
+}
+
+.movie-section:hover {
+    transform: translateY(-5px);
 }
 
 .movie-section h3 {
     margin-bottom: 15px;
-    color: #222;
+    color: var(--primary-red);
+    font-size: 1.5em;
+    font-weight: bold;
+    letter-spacing: 1px;
+    border-bottom: 2px solid var(--light-red);
+    padding-bottom: 10px;
+    display: inline-block;
+    position: relative;
+}
+
+.movie-section h3::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    right: 0;
+    width: 30%;
+    height: 2px;
+    background-color: var(--nazi-yellow);
 }
 
 .movie-section img {
@@ -161,48 +313,103 @@ main {
     height: auto;
     margin-bottom: 15px;
     border-radius: 5px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    border: 1px solid #ddd;
+    max-height: 350px;
+    object-fit: contain;
 }
 
 .movie-section p {
     margin-bottom: 15px;
     line-height: 1.8;
+    font-size: 1.05em;
+    color: #444;
 }
 
 .contact-section {
     margin-bottom: 50px;
-    padding: 20px;
+    padding: 30px;
     text-align: center;
+    background-color: white;
+    border-radius: 5px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+    border-top: 4px solid var(--primary-red);
+    position: relative;
+}
+
+.contact-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background-image: linear-gradient(to right, var(--primary-red) 70%, var(--nazi-yellow) 70%);
 }
 
 .contact-section h2 {
     margin-bottom: 20px;
+    color: var(--primary-red);
+    font-size: 2em;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+}
+
+.contact-section h2::before {
+    content: '';
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    background-image: url('images/swastica.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    margin-right: 10px;
+    vertical-align: middle;
 }
 
 .contact-section a {
-    color: #333;
+    color: var(--primary-red);
     font-weight: bold;
+    transition: color 0.3s;
+}
+
+.contact-section a:hover {
+    color: var(--dark-red);
+    text-decoration: underline;
 }
 
 
 /* Footer styles */
 
 footer {
-    background-color: #333;
+    background-color: var(--dark-gray);
     color: white;
     text-align: center;
     padding: 20px 0;
     margin-top: 20px;
+    border-top: 5px solid var(--primary-red);
+    position: relative;
+}
+
+footer::before {
+    content: '';
+    position: absolute;
+    top: -10px;
+    left: 0;
+    width: 100%;
+    height: 5px;
+    background-image: repeating-linear-gradient( 90deg, var(--primary-red), var(--primary-red) 20px, var(--nazi-yellow) 20px, var(--nazi-yellow) 40px);
 }
 
 footer a {
     color: white;
     text-decoration: none;
     margin: 0 10px;
+    transition: color 0.3s;
 }
 
 footer a:hover {
-    text-decoration: underline;
+    color: var(--nazi-yellow);
 }
 
 
@@ -222,9 +429,21 @@ footer a:hover {
         display: block;
         padding: 15px;
         margin: 0;
-        border-bottom: 1px solid #444;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.2);
     }
     nav a:last-child {
         border-bottom: none;
+    }
+    .movie-section h3 {
+        font-size: 1.3em;
+    }
+    .movie-section {
+        padding: 15px;
+    }
+    .banner {
+        max-height: 50px;
+    }
+    .logo {
+        max-width: 300px;
     }
 }
