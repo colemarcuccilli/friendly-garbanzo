@@ -165,4 +165,34 @@ document.addEventListener('DOMContentLoaded', function() {
     languageToggle.addEventListener('change', function() {
         translatePage(this.checked);
     });
+
+    // Video autoplay with sound
+    const video = document.querySelector('.video-container video');
+    if (video) {
+        // When user interacts with page
+        document.addEventListener('click', function() {
+            if (video.paused) {
+                video.play()
+                    .then(() => {
+                        console.log('Video playback started');
+                    })
+                    .catch(error => {
+                        console.error('Error attempting to play video:', error);
+                    });
+            }
+        }, { once: true });
+
+        // Try to autoplay immediately
+        video.play()
+            .then(() => {
+                console.log('Video autoplay started successfully');
+            })
+            .catch(error => {
+                console.error('Autoplay prevented:', error);
+                // Show a message or UI indicating user needs to interact
+            });
+
+        // Ensure video volume is up
+        video.volume = 1.0;
+    }
 });
